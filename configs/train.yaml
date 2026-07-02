@@ -16,3 +16,13 @@ log_dir: outputs/logs
 checkpoint_dir: outputs/checkpoints
 plot_dir: outputs/plots
 embedding_dir: outputs/embeddings
+
+# Advanced features
+mixed_precision: false
+mp_dtype: fp16
+distributed: false
+gradient_accumulation_steps: 1
+ssl_loss_weight: 0.0
+ultralgcn_weight: 0.0
+edge_dropout: 0.0
+node_dropout: 0.0

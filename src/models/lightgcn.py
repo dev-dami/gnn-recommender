@@ -5,12 +5,13 @@ import numpy as np
 
 from .layers import LightGCNLayer, scipy_sparse_to_torch
 from .embedding import EmbeddingLayer
+from .dropout import EdgeDropout
 
 
 class LightGCN(nn.Module):
     def __init__(self, num_users: int, num_items: int, embedding_dim: int,
                  num_layers: int = 3, norm_adj: sparse.csr_matrix = None,
-                 dropout: float = 0.0):
+                 dropout: float = 0.0, edge_dropout: float = 0.0):
         super().__init__()
         self.num_users = num_users
         self.num_items = num_items
@@ -20,6 +21,7 @@ class LightGCN(nn.Module):
         self.embedding = EmbeddingLayer(num_users, num_items, embedding_dim)
         self.layers = nn.ModuleList([LightGCNLayer() for _ in range(num_layers)])
         self.dropout = nn.Dropout(dropout) if dropout > 0 else None
+        self.edge_dropout = EdgeDropout(p=edge_dropout) if edge_dropout > 0 else None
 
         if norm_adj is not None:
             self.register_buffer(
@@ -29,7 +31,6 @@ class LightGCN(nn.Module):
         else:
             self.norm_adj = None
 
-        total_nodes = num_users + num_items
         self.alpha = nn.Parameter(torch.ones(num_layers + 1) / (num_layers + 1), requires_grad=False)
 
     def forward(self) -> tuple[torch.Tensor, torch.Tensor]:
@@ -39,10 +40,14 @@ class LightGCN(nn.Module):
         if self.norm_adj is None:
             raise ValueError("norm_adj not set. Call set_norm_adj() first.")
 
+        adj = self.norm_adj
+        if self.edge_dropout is not None and self.training:
+            adj = self.edge_dropout(adj)
+
         layer_embs = [all_emb]
         x = all_emb
         for layer in self.layers:
-            x = layer(x, self.norm_adj)
+            x = layer(x, adj)
             if self.dropout is not None:
                 x = self.dropout(x)
             layer_embs.append(x)
