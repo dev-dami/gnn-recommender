@@ -1,0 +1,14 @@
+name: movieLens-100k
+url: https://files.grouplens.org/datasets/movielens/ml-100k.zip
+raw_dir: data/raw
+processed_dir: data/processed
+cache_dir: data/cache
+files:
+  ratings: u.data
+  movies: u.item
+  users: u.user
+separator: "\t"
+encoding: latin-1
+min_interactions: 5
+test_ratio: 0.1
+val_ratio: 0.1
