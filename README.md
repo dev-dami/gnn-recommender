@@ -448,65 +448,17 @@ Building this project taught me three things:
 
 ## References
 
-<details>
-<summary><strong>Show BibTeX citations</strong></summary>
+- **LightGCN** — He et al. (2020), *LightGCN: Simplifying and Powering Graph Convolution Network for Recommendation* (SIGIR 2020)  
+  https://arxiv.org/abs/2002.02126
 
-```bibtex
-@inproceedings{he2020lightgcn,
-  title={
-    LightGCN: Simplifying and Powering
-    Graph Convolution Network for Recommendation
-  },
-  author={
-    He, Xiangnan and Deng, Kuan and Wang, Xiang and
-    Li, Yan and Zhang, Yongdong and Wang, Meng
-  },
-  booktitle={SIGIR},
-  year={2020}
-}
+- **UltraGCN** — Mao et al. (2021), *UltraGCN: Ultra Simplification of Graph Convolutional Networks for Recommendation* (CIKM 2021)  
+  https://arxiv.org/abs/2110.15114
 
-@inproceedings{mao2021ultralgcn,
-  title={
-    UltraGCN: Ultra Simplification of
-    Graph Convolutional Networks for Recommendation
-  },
-  author={
-    Mao, Kesen and Zhu, Junchao and Xiao, Xiao and
-    Xiao, Biao and Hu, Zhiqiang
-  },
-  booktitle={CIKM},
-  year={2021}
-}
+- **BPR** — Rendle et al. (2009), *BPR: Bayesian Personalized Ranking from Implicit Feedback* (UAI 2009)  
+  https://arxiv.org/abs/1205.2618
 
-@inproceedings{rendle2009bpr,
-  title={
-    BPR: Bayesian Personalized Ranking
-    from Implicit Feedback
-  },
-  author={
-    Rendle, Steffen and Freudenthaler, Christoph and
-    Gantner, Zeno and Schmidt-Thieme, Lars
-  },
-  booktitle={UAI},
-  year={2009}
-}
-
-@inproceedings{yu2022simGCL,
-  title={
-    Are Graph Augmentations Necessary?
-    Simple Graph Contrastive Learning
-    for Recommendation
-  },
-  author={
-    Yu, Junliang and Yin, Hongzhi and Xia, Xin and
-    Chen, Tong and Li, Li and Huang, Zhiyuan
-  },
-  booktitle={SIGIR},
-  year={2022}
-}
-```
-
-</details>
+- **SimGCL** — Yu et al. (2022), *Are Graph Augmentations Necessary? Simple Graph Contrastive Learning for Recommendation* (SIGIR 2022)  
+  https://arxiv.org/abs/2202.02126
 
 
 
